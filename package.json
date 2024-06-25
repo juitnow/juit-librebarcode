@@ -30,15 +30,15 @@
   "devDependencies": {
     "@plugjs/build": "^0.6.0"
   },
+  "directories": {
+    "test": "test"
+  },
   "files": [
     "*.md",
     "assets/",
     "dist/",
     "src/"
   ],
-  "directories": {
-    "test": "test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juitnow/juit-librebarcode.git"
