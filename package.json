@@ -17,18 +17,9 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.mjs"
       }
-    },
-    "./assets/LibreBarcode128-Regular.ttf": {
-      "asset": "./assets/LibreBarcode128-Regular.ttf"
-    },
-    "./assets/LibreBarcode128Text-Regular.ttf": {
-      "asset": "./assets/LibreBarcode128Text-Regular.ttf"
-    },
-    "./assets/LibreBarcodeEAN13Text-Regular.ttf": {
-      "asset": "./assets/LibreBarcodeEAN13Text-Regular.ttf"
     }
   },
- "scripts": {
+  "scripts": {
     "build": "plug",
     "coverage": "plug coverage",
     "dev": "plug coverage -w src -w test",
@@ -44,5 +35,25 @@
     "assets/",
     "dist/",
     "src/"
-  ]
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juitnow/juit-librebarcode.git"
+  },
+  "keywords": [
+    "barcode",
+    "fonts",
+    "node",
+    "ean13",
+    "ean",
+    "code128",
+    "encoder"
+  ],
+  "bugs": {
+    "url": "https://github.com/juitnow/juit-librebarcode/issues"
+  },
+  "homepage": "https://github.com/juitnow/juit-librebarcode#readme"
 }
