@@ -1,15 +1,16 @@
 LibreBarcode Fonts and Encoders
 ===============================
 
-* [Code128](#code128)
-* [EAN-13, UPC/A and EAN-8](#ean-13-upca-ean-8)
-* [EAN/GS-1 Checksums](#eangs-1-checksums)
-* [License (encoders)](LICENSE-ASL.md)
-* [License (fonts)](LICENSE-OFL.md)
-
 This project provides two encoders for the **Code128** and **EAN** fonts
 developed by the [LibreBarcode](https://github.com/graphicore/librebarcode)
 project.
+
+* [Code128](#code128)
+* [EAN-13, UPC/A and EAN-8](#ean-13-upca-ean-8)
+* [EAN/GS-1 Checksums](#eangs-1-checksums)
+* [Font Assets](#font-assets)
+* [License (encoders)](LICENSE-ASL.md)
+* [License (fonts)](LICENSE-OFL.md)
 
 Code128
 -------
@@ -94,4 +95,32 @@ import { ean } from '@juit/librebarcode'
 
 const checksum = ean('541136108357')
 // here checksum will be the number 4
+```
+
+
+
+Font Assets
+-----------
+
+Embedded with this library, you can find three fonts for your encoding needs:
+
+* `./assets/LibreBarcode128-Regular.ttf`: the regular **Code128** font without
+  any underlying text. Use this one for GS1 barcodes, as encoding of the `FNC1`
+  character messes up the text, and anyhow the text should be represented as
+  `(xx)yyyyyyyyyy(zz)wwwwwwww...` (application identifiers with parentheses).
+* `./assets/LibreBarcode128Text-Regular.ttf`: the **Code128** font with
+  underlying text. Use this one for standard Code128 barcodes.
+* `./assets/LibreBarcodeEAN13Text-Regular.ttf`: the **EAN** font.
+
+You can find their file locations in the `fonts` export:
+
+```typescript
+import { fonts } from '@juit/librebarcode'
+
+// Here fonts will look somewhat similar to
+{
+  'LibreBarcode128-Regular.ttf': '... path on your disk .../LibreBarcode128-Regular.ttf',
+  'LibreBarcode128Text-Regular.ttf': '... path on your disk .../LibreBarcode128Text-Regular.ttf',
+  'LibreBarcodeEAN13Text-Regular.ttf': '... path on your disk .../LibreBarcodeEAN13Text-Regular.ttf'
+}
 ```
