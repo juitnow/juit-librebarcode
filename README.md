@@ -118,9 +118,9 @@ You can find their file locations in the `fonts` export:
 import { fonts } from '@juit/librebarcode'
 
 // Here fonts will look somewhat similar to
-{
-  'LibreBarcode128-Regular.ttf': '... path on your disk .../LibreBarcode128-Regular.ttf',
-  'LibreBarcode128Text-Regular.ttf': '... path on your disk .../LibreBarcode128Text-Regular.ttf',
-  'LibreBarcodeEAN13Text-Regular.ttf': '... path on your disk .../LibreBarcodeEAN13Text-Regular.ttf'
-}
+// {
+//   'LibreBarcode128-Regular.ttf': '... path on your disk .../LibreBarcode128-Regular.ttf',
+//   'LibreBarcode128Text-Regular.ttf': '... path on your disk .../LibreBarcode128Text-Regular.ttf',
+//   'LibreBarcodeEAN13Text-Regular.ttf': '... path on your disk .../LibreBarcodeEAN13Text-Regular.ttf'
+// }
 ```
