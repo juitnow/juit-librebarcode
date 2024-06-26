@@ -9,7 +9,7 @@ describe('Library', () => {
   })
 
   it('should encode a string for the Code128 font', () => {
-    expect(lib.code128('PJJ123C')).toEqual('ÌPJJ123CWÎ')
+    expect(lib.code128('PJJ123C')).toEqual('ËPJJ123CVÎ')
   })
 
   it('should encode a string for the EAN font', () => {

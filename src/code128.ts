@@ -179,6 +179,13 @@ export const START_B = 104
 /** Start with code-set `C` */
 export const START_C = 105
 
+/** Start strings by code-set */
+export const START = {
+  A: START_A,
+  B: START_B,
+  C: START_C,
+} as const
+
 /** The stop character */
 export const STOP = '\u00ce' // Î
 
@@ -219,11 +226,7 @@ export class Encoder {
     if (values) {
       this._values = values
     } else {
-      switch (codeset) {
-        case 'A': this._values = [ START_A ]; break
-        case 'B': this._values = [ START_B ]; break
-        case 'C': this._values = [ START_C ]; break
-      }
+      this._values = [ START[codeset] ]
     }
 
     this._encoders.push(this)
@@ -334,32 +337,62 @@ export class Encoder {
 
   /** Finish the encoding, and return the string for our barcode */
   public finish(): string {
-    // The checksum, as the weighted sum of all values modulo 103
-    let sum = 0
-    for (let i = 0; i < this._values.length; i ++) {
-      sum += this._values[i]! * (i || 1)
-    }
-
-    // Encode all our values, convert into characters, and add a "stop"
-    return [ ...this._values, (sum % 103) as Code ]
-        .map((value) => CHARACTERS[value])
-        .join('') + STOP
+    return finish(this._values)
   }
+}
+
+/** Finish the encoding, and return the string for our barcode */
+function finish(values: Code[]): string {
+  // The checksum, as the weighted sum of all values modulo 103
+  let sum = 0
+  for (let i = 0; i < values.length; i ++) {
+    sum += values[i]! * (i || 1)
+  }
+
+  // Encode all our values, convert into characters, and add a "stop"
+  return [ ...values, (sum % 103) as Code ]
+      .map((value) => CHARACTERS[value])
+      .join('') + STOP
+}
+
+/** Encode the specified string only using the specified codeset */
+function encode(string: string, codeset: CodeSet): string {
+  // Get our codeset (sequence => Code)
+  const codes = CODESETS[codeset]
+
+  // Process the string
+  const values: Code[] = [ START[codeset] ]
+  next: while (string) {
+    for (const [ value, code ] of Object.entries(codes)) {
+      if (string.startsWith(value)) {
+        values.push(code)
+        string = string.slice(value.length)
+        continue next
+      }
+    }
+    throw new Error(`Unable to encode character "${unicode(string[0]!)}" in code set "${codeset}"`)
+  }
+
+  // Finish up the result
+  return finish(values)
 }
 
 /* ========================================================================== *
  * ENCODE                                                                     *
  * ========================================================================== */
 
-export function code128(string: string): string {
+export function code128(string: string, codeset?: CodeSet): string {
+  // If a code set was specified, encode straight!
+  if (codeset) return encode(string, codeset)
+
   // All our encoders, they'll "procreate" while encoding
   const encoders: Encoder[] = []
 
   // Initial encoders, starting at each code-set (we start with "C" as it
   // has the biggest chance of encoding as much data in a shorter barcode)
   new Encoder('C', string, encoders)
-  new Encoder('B', string, encoders)
   new Encoder('A', string, encoders)
+  new Encoder('B', string, encoders)
 
   // Repeat ad nauseam
   for (let length = 1; ; length ++) {

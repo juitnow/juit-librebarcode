@@ -161,7 +161,8 @@ function toDigits(string: string): Digit[] {
   for (let i = 0; i < string.length; i ++) {
     const digit = string.charCodeAt(i) - 48
     if ((digit < 0) || (digit > 9)) {
-      throw new Error(`Invalid character to encode "${string[i]}"`)
+      const hex = string.charCodeAt(0).toString(16).padStart(4, '0')
+      throw new Error(`Invalid character to encode "\\u${hex}"`)
     } else {
       digits.push(digit as Digit)
     }

@@ -1,4 +1,4 @@
-import { CHARACTERS, CODE_A, CODE_B, CODE_C, SHIFT, START_A, START_B, START_C, STOP, Encoder, code128 } from '../src/code128'
+import { CHARACTERS, CODE_A, CODE_B, CODE_C, SHIFT, START_A, START_B, START_C, STOP, Encoder, code128, FNC1, FNC2, FNC4, FNC3 } from '../src/code128'
 
 import type { CodeSet } from '../src/code128'
 
@@ -33,8 +33,8 @@ describe('Code128 Encoding', () => {
   it('pass some basic tests', () => {
     // code "C" has the highest preference
     expect(decode(code128(''))).toEqual([ START_C, 2 ])
-    // from wikipedia, but starting with code set "B"
-    expect(decode(code128('PJJ123C'))).toEqual([ START_B, 48, 42, 42, 17, 18, 19, 35, 55 ])
+    // from wikipedia, https://en.wikipedia.org/wiki/Code_128
+    expect(decode(code128('PJJ123C'))).toEqual([ START_A, 48, 42, 42, 17, 18, 19, 35, 54 ])
 
     // encoded with LibreBarcode's own
     expect(code128('G0P=m8_1qvdmMwl7h-Hw')).toEqual('ÌG0P=m8_1qvdmMwl7h-Hw4Î')
@@ -49,11 +49,11 @@ describe('Code128 Encoding', () => {
     expect(code128('84904240709448897124')).toEqual('ÍtzJHf~Pyg8ÅÎ')
     expect(code128('09899528779111233812')).toEqual('Í)yÃ<m{+7F,mÎ')
 
-    expect(code128('GXLJJWFXHFHIUSV')).toEqual('ÌGXLJJWFXHFHIUSV=Î')
-    expect(code128('KCSXEWSRCHRVJQL')).toEqual('ÌKCSXEWSRCHRVJQL&Î')
-    expect(code128('BRTMZKTNGZASNAF')).toEqual('ÌBRTMZKTNGZASNAFBÎ')
-    expect(code128('OTBIARSJFIWFWXQ')).toEqual('ÌOTBIARSJFIWFWXQ]Î')
-    expect(code128('REXOIFKJFTEUERC')).toEqual('ÌREXOIFKJFTEUERC,Î')
+    expect(code128('GXLJJWFXHFHIUSV')).toEqual('ËGXLJJWFXHFHIUSV<Î')
+    expect(code128('KCSXEWSRCHRVJQL')).toEqual('ËKCSXEWSRCHRVJQL%Î')
+    expect(code128('BRTMZKTNGZASNAF')).toEqual('ËBRTMZKTNGZASNAFAÎ')
+    expect(code128('OTBIARSJKIWFWXQ')).toEqual('ËOTBIARSJKIWFWXQ"Î')
+    expect(code128('REXOIFKJFTEUERC')).toEqual('ËREXOIFKJFTEUERC+Î')
   })
 
   it('should not switch in code set "A"', () => {
@@ -153,5 +153,37 @@ describe('Code128 Encoding', () => {
     expect(() => code128('\u0000\u00a0')).toThrowError('Unable to encode character "\\u00a0"') // "A"
     expect(() => code128('a\u00a0')).toThrowError('Unable to encode character "\\u00a0"') // "B"
     expect(() => code128('00\u00a0')).toThrowError('Unable to encode character "\\u00a0"') // "C"
+  })
+
+  describe('Encoding with a specific code-set', () => {
+    it('should encode a string in the "A" code set', () => {
+      expect(decode(code128('ABCDEF', 'A')))
+          .toEqual([ START_A, 33, 34, 35, 36, 37, 38, 42 ])
+      expect(decode(code128('\u0000\u0001' + FNC1 + FNC2 + FNC3 + FNC4, 'A')))
+          .toEqual([ START_A, 64, 65, 102, 97, 96, 101, 17 ])
+    })
+
+    it('should encode a string in the "B" code set', () => {
+      expect(decode(code128('ABCDEF', 'B')))
+          .toEqual([ START_B, 33, 34, 35, 36, 37, 38, 43 ])
+      expect(decode(code128('ab' + FNC1 + FNC2 + FNC3 + FNC4, 'B')))
+          .toEqual([ START_B, 65, 66, 102, 97, 96, 100, 15 ])
+    })
+
+    it('should encode a string in the "C" code set', () => {
+      expect(decode(code128('00336699', 'C')))
+          .toEqual([ START_C, 0, 33, 66, 99, 44 ])
+      expect(decode(code128('0033' + FNC1 + '6699', 'C')))
+          .toEqual([ START_C, 0, 33, 102, 66, 99, 0 ])
+    })
+
+    it('should fail when a character is not present in a specific code set', () => {
+      expect(() => code128('a', 'A'))
+          .toThrowError('Unable to encode character "\\u0061" in code set "A"')
+      expect(() => code128('\u0000', 'B'))
+          .toThrowError('Unable to encode character "\\u0000" in code set "B"')
+      expect(() => code128('0', 'C')) // a single digit is not valid in "C"
+          .toThrowError('Unable to encode character "\\u0030" in code set "C"')
+    })
   })
 })

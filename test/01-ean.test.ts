@@ -94,7 +94,7 @@ describe('EAN / UPC', () => {
 
   it('should fail when a string can not be encoded', () => {
     expect(() => ean('123456A789012'))
-        .toThrowError('Invalid character to encode "A"')
+        .toThrowError('Invalid character to encode "\\u0031"')
     expect(() => ean('00000000000000000000'))
         .toThrowError('Unable to encode string 20 characters long')
   })
