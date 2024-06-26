@@ -46,6 +46,23 @@ const encoded = code128(gs1)
 // now you can feed the "encoded" string to the font!
 ```
 
+#### Encoding with a specific code set
+
+In certain cases, where a _specific_ code set of **Code128** is required for
+a barcode (for example labeling products for the Amazon Marketplace, requiring
+codeset "A"), there might be the need to forego the "shortest path" algorithm
+provided by `code128()` and specify the code set directly.
+
+In this case, an extra parameter to `code128()` can be added to the call:
+
+```typescript
+import { code128 } from '@juit/librebarcode'
+
+const a = code128('ABCD', 'A') // this will be constrained to code set "A"
+const b = code128('abcd', 'B') // this will be constrained to code set "B"
+const b = code128('1234', 'C') // this will be constrained to code set "C"
+```
+
 
 
 EAN-13, UPC/A, EAN-8
