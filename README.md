@@ -8,7 +8,7 @@ project.
 * [Code128](#code128)
 * [EAN-13, UPC/A and EAN-8](#ean-13-upca-ean-8)
 * [EAN/GS-1 Checksums](#eangs-1-checksums)
-* [Font Assets](#font-assets)
+* [Font Assets and CSS](#font-assets-and-css)
 * [License (encoders)](LICENSE-ASL.md)
 * [License (fonts)](LICENSE-OFL.md)
 
@@ -116,28 +116,41 @@ const checksum = ean('541136108357')
 
 
 
-Font Assets
------------
+Font Assets and CSS
+-------------------
 
 Embedded with this library, you can find three fonts for your encoding needs:
 
-* `./assets/LibreBarcode128-Regular.ttf`: the regular **Code128** font without
+* `./assets/LibreBarcode128-Regular....`: the regular **Code128** font without
   any underlying text. Use this one for GS1 barcodes, as encoding of the `FNC1`
   character messes up the text, and anyhow the text should be represented as
   `(xx)yyyyyyyyyy(zz)wwwwwwww...` (application identifiers with parentheses).
-* `./assets/LibreBarcode128Text-Regular.ttf`: the **Code128** font with
+* `./assets/LibreBarcode128Text-Regular....`: the **Code128** font with
   underlying text. Use this one for standard Code128 barcodes.
-* `./assets/LibreBarcodeEAN13Text-Regular.ttf`: the **EAN** font.
+* `./assets/LibreBarcodeEAN13Text-Regular....`: the **EAN** font.
 
-You can find their file locations in the `fonts` export:
+All fonts are available in TrueType (`.ttf`), OpenType (`.otf`), WOFF (`.woff`)
+and WOFF2 (`.woff2`) formats and are declared as exports of this package.
+
+To know the path of those assets at runtime, you can use `require.resolve(...)`
+on CommonJS or `import.meta.resolve(...)` for EcmaScript modules.
 
 ```typescript
-import { fonts } from '@juit/librebarcode'
+// in CommonJS
+const path = require.resolve('@juit/librebarcode/assets/LibreBarcode128-Regular.ttf')
 
-// Here fonts will look somewhat similar to
-// {
-//   'LibreBarcode128-Regular.ttf': '... path on your disk .../LibreBarcode128-Regular.ttf',
-//   'LibreBarcode128Text-Regular.ttf': '... path on your disk .../LibreBarcode128Text-Regular.ttf',
-//   'LibreBarcodeEAN13Text-Regular.ttf': '... path on your disk .../LibreBarcodeEAN13Text-Regular.ttf'
-// }
+// in EcmaScript modules
+const url = import.meta.resolve('@juit/librebarcode/assets/LibreBarcodeEAN13Text-Regular.woff2')
 ```
+
+Similarly, a number of CSS stylesheets are included in the package to easily
+embed these fonts onto web pages and similar. These stylesheets define the
+families `LibreBarcode128`, `LibreBarcode128Text`, and `LibreBarcodeEAN13Text`
+(all with _normal_ font style and _400_ as weight).
+
+* `./assets/fonts-otf.css`: Only import OpenType fonts.
+* `./assets/fonts-ttf.css`: Only import TrueType fonts.
+* `./assets/fonts-woff.css`: Only import WOFF fonts.
+* `./assets/fonts-woff2.css`: Only import WOFF2 fonts.
+* `./assets/fonts.css`: Import all font types, in the following preference
+   order: WOFF2, WOFF, OpenType, TrueType.
