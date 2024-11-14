@@ -17,7 +17,24 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.mjs"
       }
-    }
+    },
+    "./assets/LibreBarcode128-Regular.otf": "./assets/LibreBarcode128-Regular.otf",
+    "./assets/LibreBarcode128-Regular.ttf": "./assets/LibreBarcode128-Regular.ttf",
+    "./assets/LibreBarcode128-Regular.woff": "./assets/LibreBarcode128-Regular.woff",
+    "./assets/LibreBarcode128-Regular.woff2": "./assets/LibreBarcode128-Regular.woff2",
+    "./assets/LibreBarcode128Text-Regular.otf": "./assets/LibreBarcode128Text-Regular.otf",
+    "./assets/LibreBarcode128Text-Regular.ttf": "./assets/LibreBarcode128Text-Regular.ttf",
+    "./assets/LibreBarcode128Text-Regular.woff": "./assets/LibreBarcode128Text-Regular.woff",
+    "./assets/LibreBarcode128Text-Regular.woff2": "./assets/LibreBarcode128Text-Regular.woff2",
+    "./assets/LibreBarcodeEAN13Text-Regular.otf": "./assets/LibreBarcodeEAN13Text-Regular.otf",
+    "./assets/LibreBarcodeEAN13Text-Regular.ttf": "./assets/LibreBarcodeEAN13Text-Regular.ttf",
+    "./assets/LibreBarcodeEAN13Text-Regular.woff": "./assets/LibreBarcodeEAN13Text-Regular.woff",
+    "./assets/LibreBarcodeEAN13Text-Regular.woff2": "./assets/LibreBarcodeEAN13Text-Regular.woff2",
+    "./assets/fonts-otf.css": "./assets/fonts-otf.css",
+    "./assets/fonts-ttf.css": "./assets/fonts-ttf.css",
+    "./assets/fonts-woff.css": "./assets/fonts-woff.css",
+    "./assets/fonts-woff2.css": "./assets/fonts-woff2.css",
+    "./assets/fonts.css": "./assets/fonts.css"
   },
   "scripts": {
     "build": "plug",
