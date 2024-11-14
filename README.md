@@ -12,6 +12,8 @@ project.
 * [License (encoders)](LICENSE-ASL.md)
 * [License (fonts)](LICENSE-OFL.md)
 
+Look here for a simple [demo](https://juitnow.github.io/juit-librebarcode/).
+
 Code128
 -------
 
