@@ -3,4 +3,5 @@
 .vscode/
 coverage/
 dist/
+dist-demo/
 node_modules/

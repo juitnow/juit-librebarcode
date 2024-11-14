@@ -1,0 +1,40 @@
+name: Publish Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        id: setup
+
+      - name: Build Pages
+        run: |
+          npm clean-install
+          npm run build
+        env:
+          VITE_BASE_URL: "${{steps.setup.outputs.base_url}}"
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist-demo
+
+      - name: Deploy Pages
+        uses: actions/deploy-pages@v4

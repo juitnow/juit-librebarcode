@@ -1,6 +1,6 @@
 {
   "name": "@juit/librebarcode",
-  "version": "1.0.16",
+  "version": "2.0.0",
   "description": "Encoders and fonts for EAN13 and Code128",
   "author": "Team Juit <developers@juit.com>",
   "license": "Apache-2.0",
@@ -17,18 +17,43 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.mjs"
       }
-    }
+    },
+    "./assets/LibreBarcode128-Regular.otf": "./assets/LibreBarcode128-Regular.otf",
+    "./assets/LibreBarcode128-Regular.ttf": "./assets/LibreBarcode128-Regular.ttf",
+    "./assets/LibreBarcode128-Regular.woff": "./assets/LibreBarcode128-Regular.woff",
+    "./assets/LibreBarcode128-Regular.woff2": "./assets/LibreBarcode128-Regular.woff2",
+    "./assets/LibreBarcode128Text-Regular.otf": "./assets/LibreBarcode128Text-Regular.otf",
+    "./assets/LibreBarcode128Text-Regular.ttf": "./assets/LibreBarcode128Text-Regular.ttf",
+    "./assets/LibreBarcode128Text-Regular.woff": "./assets/LibreBarcode128Text-Regular.woff",
+    "./assets/LibreBarcode128Text-Regular.woff2": "./assets/LibreBarcode128Text-Regular.woff2",
+    "./assets/LibreBarcodeEAN13Text-Regular.otf": "./assets/LibreBarcodeEAN13Text-Regular.otf",
+    "./assets/LibreBarcodeEAN13Text-Regular.ttf": "./assets/LibreBarcodeEAN13Text-Regular.ttf",
+    "./assets/LibreBarcodeEAN13Text-Regular.woff": "./assets/LibreBarcodeEAN13Text-Regular.woff",
+    "./assets/LibreBarcodeEAN13Text-Regular.woff2": "./assets/LibreBarcodeEAN13Text-Regular.woff2",
+    "./assets/fonts-otf.css": "./assets/fonts-otf.css",
+    "./assets/fonts-ttf.css": "./assets/fonts-ttf.css",
+    "./assets/fonts-woff.css": "./assets/fonts-woff.css",
+    "./assets/fonts-woff2.css": "./assets/fonts-woff2.css",
+    "./assets/fonts.css": "./assets/fonts.css"
   },
   "scripts": {
-    "build": "plug",
+    "build": "plug && vite build",
     "coverage": "plug coverage",
     "dev": "plug coverage -w src -w test",
+    "demo": "vite",
     "lint": "plug lint",
     "test": "plug test",
     "transpile": "plug transpile"
   },
   "devDependencies": {
-    "@plugjs/build": "^0.6.14"
+    "@plugjs/build": "^0.6.15",
+    "@plugjs/eslint-plugin": "^0.2.25",
+    "@quasar/vite-plugin": "^1.8.1",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "eslint-plugin-vue": "^9.31.0",
+    "quasar": "^2.17.2",
+    "sass-embedded": "^1.80.7",
+    "vite": "^5.4.11"
   },
   "directories": {
     "test": "test"

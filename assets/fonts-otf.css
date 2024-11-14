@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'LibreBarcode128';
+  font-style: normal;
+  font-weight: 400;
+  src: url('LibreBarcode128-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LibreBarcode128Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url('LibreBarcode128Text-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'LibreBarcodeEAN13Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url('LibreBarcodeEAN13Text-Regular.otf') format('opentype');
+}
