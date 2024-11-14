@@ -1,6 +1,6 @@
 {
   "name": "@juit/librebarcode",
-  "version": "1.0.16",
+  "version": "2.0.0",
   "description": "Encoders and fonts for EAN13 and Code128",
   "author": "Team Juit <developers@juit.com>",
   "license": "Apache-2.0",
@@ -45,7 +45,7 @@
     "transpile": "plug transpile"
   },
   "devDependencies": {
-    "@plugjs/build": "^0.6.14"
+    "@plugjs/build": "^0.6.15"
   },
   "directories": {
     "test": "test"
