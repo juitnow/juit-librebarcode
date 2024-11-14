@@ -37,15 +37,23 @@
     "./assets/fonts.css": "./assets/fonts.css"
   },
   "scripts": {
-    "build": "plug",
+    "build": "plug && vite build",
     "coverage": "plug coverage",
     "dev": "plug coverage -w src -w test",
+    "demo": "vite",
     "lint": "plug lint",
     "test": "plug test",
     "transpile": "plug transpile"
   },
   "devDependencies": {
-    "@plugjs/build": "^0.6.15"
+    "@plugjs/build": "^0.6.15",
+    "@plugjs/eslint-plugin": "^0.2.25",
+    "@quasar/vite-plugin": "^1.8.1",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "eslint-plugin-vue": "^9.31.0",
+    "quasar": "^2.17.2",
+    "sass-embedded": "^1.80.7",
+    "vite": "^5.4.11"
   },
   "directories": {
     "test": "test"
