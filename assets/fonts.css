@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'LibreBarcode128';
+  font-style: normal;
+  font-weight: 400;
+  src: url('LibreBarcode128-Regular.woff2') format('woff2'),
+       url('LibreBarcode128-Regular.woff')  format('woff'),
+       url('LibreBarcode128-Regular.otf')   format('opentype'),
+       url('LibreBarcode128-Regular.ttf')   format('truetype');
+}
+
+@font-face {
+  font-family: 'LibreBarcode128Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url('LibreBarcode128Text-Regular.woff2') format('woff2'),
+       url('LibreBarcode128Text-Regular.woff')  format('woff'),
+       url('LibreBarcode128Text-Regular.otf')   format('opentype'),
+       url('LibreBarcode128Text-Regular.ttf')   format('truetype');
+}
+
+@font-face {
+  font-family: 'LibreBarcodeEAN13Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url('LibreBarcodeEAN13Text-Regular.woff2') format('woff2'),
+       url('LibreBarcodeEAN13Text-Regular.woff')  format('woff'),
+       url('LibreBarcodeEAN13Text-Regular.otf')   format('opentype'),
+       url('LibreBarcodeEAN13Text-Regular.ttf')   format('truetype');
+}
