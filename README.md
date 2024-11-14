@@ -110,9 +110,9 @@ A separate function `checksum()` can be used to calculate the checksum for
 an *arbitrary* sequence of digits according to the EAN/GS-1 calculation rules:
 
 ```typescript
-import { ean } from '@juit/librebarcode'
+import { checksum } from '@juit/librebarcode'
 
-const checksum = ean('541136108357')
+const check = checksum('541136108357')
 // here checksum will be the number 4
 ```
 
