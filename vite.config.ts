@@ -21,10 +21,4 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./demo', import.meta.url)),
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: { api: 'modern-compiler' },
-      sass: { api: 'modern-compiler' },
-    },
-  },
 })
