@@ -1,6 +1,6 @@
 {
   "name": "@juit/librebarcode",
-  "version": "2.0.53",
+  "version": "2.0.54",
   "description": "Encoders and fonts for EAN13 and Code128",
   "author": "Team Juit <developers@juit.com>",
   "license": "Apache-2.0",
@@ -47,14 +47,14 @@
     "transpile": "plug transpile"
   },
   "devDependencies": {
-    "@plugjs/build": "^0.6.71",
-    "@plugjs/eslint-plugin": "^0.5.10",
+    "@plugjs/build": "^0.6.72",
+    "@plugjs/eslint-plugin": "^0.5.11",
     "@quasar/vite-plugin": "^1.10.0",
     "@vitejs/plugin-vue": "^6.0.2",
     "eslint-plugin-vue": "^10.6.2",
     "quasar": "^2.18.6",
     "sass-embedded": "^1.93.3",
-    "vite": "^7.2.4"
+    "vite": "^7.2.6"
   },
   "overrides": {
     "@quasar/vite-plugin": {
