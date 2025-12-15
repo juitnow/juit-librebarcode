@@ -8,6 +8,5 @@ on:
 jobs:
   auto-update:
     name: Automatic Updates
-    uses: juitnow/workflows-public/.github/workflows/auto-update.yml@main
-    secrets:
-      git_token: ${{ secrets.git_token }}
+    uses: juitnow/workflows/.github/workflows/auto-update.yml@main
+    secrets: inherit
