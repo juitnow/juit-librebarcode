@@ -4,8 +4,12 @@ on:
   push:
     branches: [main]
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   release:
     name: Release Package
-    uses: juitnow/workflows/.github/workflows/release.yml@main
+    uses: juitnow/workflows-public/.github/workflows/release.yml@main
     secrets: inherit
