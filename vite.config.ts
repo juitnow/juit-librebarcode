@@ -13,7 +13,7 @@ export default defineConfig({
     quasar({ sassVariables: '@/variables.sass' }),
   ],
   build: {
-    target: 'ES2022',
+    target: 'esnext',
     outDir: 'dist-demo',
   },
   resolve: {
